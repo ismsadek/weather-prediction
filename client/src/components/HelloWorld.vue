@@ -88,7 +88,20 @@ export default {
   name: 'HelloWorld',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      msg: 'Welcome to Your Weather App'
+    }
+  },
+  methods: {
+    created() {
+			// Calling internal API with axios request
+	  	axios.get(`localhost:3000/api/weather`)
+	    	.then(response => {
+	      	// JSON responses are automatically parsed.
+	      	this.weather = response.data
+	      })
+		    .catch(e => {
+		      this.errors.push(e)
+		    })
     }
   }
 }
