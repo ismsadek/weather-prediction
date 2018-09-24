@@ -16,5 +16,5 @@ app.use('/api/weather', require('./routes/api'));
 
 //Server is listenning
 app.listen(app.get('port'), () => {
-    console.log("Server en puerto", app.get('port'))
+    console.log("Server active in port 3000", app.get('port'))
 })
