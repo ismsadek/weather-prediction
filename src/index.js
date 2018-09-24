@@ -14,7 +14,12 @@ app.use(express.json());
 app.use('/api/weather', require('./routes/api'));
 
 
+//Static Files
+//Enviamos carpeta public al navegador
+app.use(express.static(__dirname + '/public'))
+
+
 //Server is listenning
 app.listen(app.get('port'), () => {
-    console.log("Server active in port ", app.get('port'))
+    console.log("Server in port", app.get('port'))
 })
