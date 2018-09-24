@@ -11,7 +11,7 @@ router.get('/', async (req, res) => {
         console.log('error:', error); 
         console.log('statusCode:', response && response.statusCode); 
         console.log('body:', body); 
-        // res.json(body);
+        
         res.send({
             body: body
         });
