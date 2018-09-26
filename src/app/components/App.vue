@@ -8,13 +8,78 @@
             <div class="col-md-5">
                 <div class="card">
                     <div class="card-body">
-                        <button class="btn btn-primary" v-on:click="showData()">Show data</button>
+                        <div class="form-group">
+        <select class="form-control" v-model="location">
+          <option value="41,12">Álava</option>
+          <option value="60,15">A Coruña</option>
+          <option value="20,10">Albacete</option>
+          <option value="20,10">Alicante</option>
+          <option value="20,10">Almería</option>
+          <option>Asturias</option>
+          <option>Ávila</option>
+          <option>Badajoz</option>
+          <option>Barcelona</option>
+          <option>Baleares</option>
+          <option>Burgos</option>
+          <option>Cáceres</option>
+          <option>Cádiz</option>
+          <option>Cantabria</option>
+          <option>Castellón</option>
+          <option>Ceuta</option>
+          <option>Ciudad Real</option>
+          <option>Córdoba</option>
+          <option>Cuenca</option>
+          <option>Girona</option>
+          <option>Granada</option>
+          <option>Guadalajara</option>
+          <option>Guipúzcoa</option>
+          <option>Huelva</option>
+          <option>Huesca</option>
+          <option>Jaén</option>
+          <option>La Rioja</option>
+          <option>Las Palmas</option>
+          <option>León</option>
+          <option>Lleida</option>
+          <option>Lugo</option>
+          <option>Madrid</option>
+          <option>Málaga</option>
+          <option>Melilla</option>
+          <option>Murcia</option>
+          <option>Navarra</option>
+          <option>Ourense</option>
+          <option>Palencia</option>
+          <option>Pontevedra</option>
+          <option>Salamanca</option>
+          <option>Santa Cruz de Tenerife</option>
+          <option>Segovia</option>
+          <option>Sevilla</option>
+          <option>Soria</option>
+          <option>Tarragona</option>
+          <option>Teruel</option>
+          <option>Toledo</option>
+          <option>Valencia</option>
+          <option>Valladolid</option>
+          <option>Vizcaya</option>
+          <option>Zamora</option>
+          <option>Zaragoza</option>
+                                                                           
+      </select>
+                              <button class="btn btn-primary" v-on:click="showData()">Show data</button>
+
+        </div>
                         
                     </div>
                 </div>
             </div>
+            <div>
                 <p>{{  weather }}</p>
+            </div>
         </div>
+    </div>
+    <div class="container">
+<!--Málaga 36,71965	-4,420019 -->
+        
+        
     </div>
 </div>
 </template>
@@ -25,38 +90,41 @@ import axios from 'axios'
 export default {
     data() {
         return {
-            weather: []
+            weather: [],
+            location: ""
         }
     },
 
     methods: {
         showData() {
 
-            var weatherLondon = [];
+                // axios.get('/api/weather', {
+                //     location: this.location
+                // })
+                // .then(response =>{
+                // // this.weather = response.data
+                // console.log(response)
+                // })
+                // .catch(error =>{
+                // console.log(error);
+                // })
 
-                axios.get('/api/weather')
-                .then(response =>{
-                // this.weatherLondon = response.data
-                this.weather = response.data
-                // console.log(this.weatherLondon)
-                })
-                .catch(error =>{
-                console.log(error);
-                })
 
-        // axios.get('/api/weather')
-        //     .then(function (response) {
-        //         // handle success
-               
-        //         weatherLondon = response.data.body
-        //         console.log(weatherLondon)
-        //     })
-        //     .catch(function (error) {
-        //         // handle error
-        //         console.log(error);
-        //     })
+                    axios.post('/api/weather', {
+                        location: this.location,
+                    })
+                    .then(response =>{
+                        this.weather = response.data
+                    })
+                    .catch(error =>{
+                        console.log(error);
+                    })
+
+
+
         }
-    }
+    },
+  
 }
 </script>
 
