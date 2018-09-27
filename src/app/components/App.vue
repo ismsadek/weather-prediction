@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="background">
     <nav class="navbar navbar-light bg-light">
         <a href="/" class="navbar-brand">OpenWeatherMap API</a>
     </nav>
@@ -9,77 +9,75 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="form-group">
-        <select class="form-control" v-model="location">
-          <option value="41,12">Álava</option>
-          <option value="60,15">A Coruña</option>
-          <option value="20,10">Albacete</option>
-          <option value="20,10">Alicante</option>
-          <option value="20,10">Almería</option>
-          <option>Asturias</option>
-          <option>Ávila</option>
-          <option>Badajoz</option>
-          <option>Barcelona</option>
-          <option>Baleares</option>
-          <option>Burgos</option>
-          <option>Cáceres</option>
-          <option>Cádiz</option>
-          <option>Cantabria</option>
-          <option>Castellón</option>
-          <option>Ceuta</option>
-          <option>Ciudad Real</option>
-          <option>Córdoba</option>
-          <option>Cuenca</option>
-          <option>Girona</option>
-          <option>Granada</option>
-          <option>Guadalajara</option>
-          <option>Guipúzcoa</option>
-          <option>Huelva</option>
-          <option>Huesca</option>
-          <option>Jaén</option>
-          <option>La Rioja</option>
-          <option>Las Palmas</option>
-          <option>León</option>
-          <option>Lleida</option>
-          <option>Lugo</option>
-          <option>Madrid</option>
-          <option>Málaga</option>
-          <option>Melilla</option>
-          <option>Murcia</option>
-          <option>Navarra</option>
-          <option>Ourense</option>
-          <option>Palencia</option>
-          <option>Pontevedra</option>
-          <option>Salamanca</option>
-          <option>Santa Cruz de Tenerife</option>
-          <option>Segovia</option>
-          <option>Sevilla</option>
-          <option>Soria</option>
-          <option>Tarragona</option>
-          <option>Teruel</option>
-          <option>Toledo</option>
-          <option>Valencia</option>
-          <option>Valladolid</option>
-          <option>Vizcaya</option>
-          <option>Zamora</option>
-          <option>Zaragoza</option>
-                                                                           
-      </select>
-                              <button class="btn btn-primary" v-on:click="showData()">Show data</button>
+                            <select class="form-control" v-model="location">
+                                <option value="42,2">Álava</option>
+                                <option value="60,15">A Coruña</option>
+                                <option value="39,1">Albacete</option>
+                                <option value="38,0.29">Alicante</option>
+                                <option value="36,2">Almería</option>
+                                <option>Asturias</option>
+                                <option>Ávila</option>
+                                <option>Badajoz</option>
+                                <option>Barcelona</option>
+                                <option>Baleares</option>
+                                <option>Burgos</option>
+                                <option>Cáceres</option>
+                                <option>Cádiz</option>
+                                <option>Cantabria</option>
+                                <option>Castellón</option>
+                                <option>Ceuta</option>
+                                <option>Ciudad Real</option>
+                                <option>Córdoba</option>
+                                <option>Cuenca</option>
+                                <option>Girona</option>
+                                <option>Granada</option>
+                                <option>Guadalajara</option>
+                                <option>Guipúzcoa</option>
+                                <option>Huelva</option>
+                                <option>Huesca</option>
+                                <option>Jaén</option>
+                                <option>La Rioja</option>
+                                <option>Las Palmas</option>
+                                <option>León</option>
+                                <option>Lleida</option>
+                                <option>Lugo</option>
+                                <option>Madrid</option>
+                                <option>Málaga</option>
+                                <option>Melilla</option>
+                                <option>Murcia</option>
+                                <option>Navarra</option>
+                                <option>Ourense</option>
+                                <option>Palencia</option>
+                                <option>Pontevedra</option>
+                                <option>Salamanca</option>
+                                <option>Santa Cruz de Tenerife</option>
+                                <option>Segovia</option>
+                                <option>Sevilla</option>
+                                <option>Soria</option>
+                                <option>Tarragona</option>
+                                <option>Teruel</option>
+                                <option>Toledo</option>
+                                <option>Valencia</option>
+                                <option>Valladolid</option>
+                                <option>Vizcaya</option>
+                                <option>Zamora</option>
+                                <option>Zaragoza</option>
+                                                                                            
+                            </select><hr>
+                            <button class="btn btn-primary" v-on:click="showPollution()">Consult the pollution</button>
+                            <button class="btn btn-primary" v-on:click="showTemperature()">Consult the temperature</button>
 
-        </div>
-                        
+                        </div>
                     </div>
                 </div>
             </div>
             <div>
                 <p>{{  weather }}</p>
             </div>
+            <div>
+                <p>{{  pollution }}</p>
+            </div>
         </div>
-    </div>
-    <div class="container">
-<!--Málaga 36,71965	-4,420019 -->
-        
-        
     </div>
 </div>
 </template>
@@ -91,36 +89,40 @@ export default {
     data() {
         return {
             weather: [],
+            pollution: [],
             location: ""
         }
     },
 
     methods: {
-        showData() {
+        showPollution() {
 
-                // axios.get('/api/weather', {
-                //     location: this.location
-                // })
-                // .then(response =>{
-                // // this.weather = response.data
-                // console.log(response)
-                // })
-                // .catch(error =>{
-                // console.log(error);
-                // })
-
-
-                    axios.post('/api/weather', {
-                        location: this.location,
-                    })
-                    .then(response =>{
-                        this.weather = response.data
-                    })
-                    .catch(error =>{
-                        console.log(error);
-                    })
+            axios.post('/api/pollution', {
+                location: this.location,
+            })
+            .then(response =>{
+                this.pollution = response.data
+                console.log(this.pollution)
+            })
+            .catch(error =>{
+                console.log(error);
+            })
 
 
+
+        },
+
+        showTemperature() {
+            axios.get('/api/weather', {
+                location: this.location
+            })
+            .then(response =>{
+            this.weather = response.data
+            console.log(response)
+            })
+            .catch(error =>{
+            console.log(error);
+            })
 
         }
     },
@@ -128,3 +130,8 @@ export default {
 }
 </script>
 
+<style>
+    /* template {
+        background-color: lightgrey;
+    } */
+</style>
