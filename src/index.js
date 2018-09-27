@@ -12,7 +12,6 @@ app.use(express.json());
 
 //Routes
 app.use('/api/weather', require('./routes/api'));
-app.use('/api/pollution', require('./routes/api'));
 
 
 //Static Files

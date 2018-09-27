@@ -97,7 +97,7 @@ export default {
     methods: {
         showPollution() {
 
-            axios.post('/api/pollution', {
+            axios.post('/api/weather/pollution', {
                 location: this.location,
             })
             .then(response =>{
@@ -113,7 +113,7 @@ export default {
         },
 
         showTemperature() {
-            axios.get('/api/weather', {
+            axios.post('/api/weather', {
                 location: this.location
             })
             .then(response =>{
