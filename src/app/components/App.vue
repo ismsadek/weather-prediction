@@ -15,8 +15,8 @@
                                 <option value="lat=45,14114&lon=-2,780104">Albacete</option>
                                 <option value="lat=20,14114&lon=4,780104">Alicante</option>
                                 <option value="lat=11,14114&lon=-2,780104">Almería</option>
-                                <option>Asturias</option>
-                                <option>Ávila</option>
+                                <option value="lat=11,14114&lon=-2,780104">Asturias</option>
+                                <option value="lat=11,14114&lon=-2,780104">Ávila</option>
                                 <option>Badajoz</option>
                                 <option>Barcelona</option>
                                 <option>Baleares</option>
