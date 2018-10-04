@@ -10,11 +10,11 @@
                     <div class="card-body">
                         <div class="form-group">
                             <select class="form-control" v-model="locationWeather">
-                                <option value="42,2">Álava</option>
-                                <option value="60,15">A Coruña</option>
-                                <option value="39,1">Albacete</option>
-                                <option value="38,29">Alicante</option>
-                                <option value="36,2">Almería</option>
+                                <option value="lat=37,14114&lon=-2,780104">Álava</option>
+                                <option value="lat=20,14114&lon=-5,780104">A Coruña</option>
+                                <option value="lat=45,14114&lon=-2,780104">Albacete</option>
+                                <option value="lat=20,14114&lon=4,780104">Alicante</option>
+                                <option value="lat=11,14114&lon=-2,780104">Almería</option>
                                 <option>Asturias</option>
                                 <option>Ávila</option>
                                 <option>Badajoz</option>
@@ -170,7 +170,7 @@ export default {
         showPollution() {
 
             axios.post('/api/weather/pollution', {
-                location: this.locationPolltion,
+                location: this.locationPollution,
             })
             .then(response =>{
                 this.pollution = response.data
@@ -185,6 +185,8 @@ export default {
         },
 
         showTemperature() {
+                            console.log(this.locationWeather)
+
             axios.post('/api/weather', {
                 location: this.locationWeather
             })

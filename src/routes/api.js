@@ -18,9 +18,8 @@ const request = require('request');
 router.post('/', (req, res) => {
     
     var location = req.body.location
-    console.log(location)
     //Aquí le tenemos que pasar las coordenadas lat & lon a diferencia de la API Pollution que es ej. 41,12
-    request('http://api.openweathermap.org/data/2.5/weather?lat=37,14114&lon=-2,780104&appid=67b36f3da0c8141f7ff48223fe715160', function (error, response, body) {
+    request('http://api.openweathermap.org/data/2.5/weather?' + location + '&appid=67b36f3da0c8141f7ff48223fe715160', function (error, response, body) {
     console.log('error:', error); 
     console.log('statusCode:', response && response.statusCode); 
     console.log('body:', body); 
