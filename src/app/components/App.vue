@@ -71,7 +71,12 @@
                 </div>
             </div>
             <div>
-                <p>{{  weather }}</p>
+              <p><strong>temperature:</strong>{{ temperature }}ºC</p>
+              <p><strong>humidity:</strong>{{ humidity }}%</p>
+              <p><strong>pressure:</strong>{{ pressure }}bar</p>
+            
+
+
             </div>
           
         </div>
@@ -159,10 +164,13 @@ import axios from 'axios'
 export default {
     data() {
         return {
-            weather: [],
+            weather: {},
             pollution: [],
             locationWeather: "",
-            locationPollution: ""
+            locationPollution: "",
+            temperature: "",
+            humidity: "",
+            pressure: ""
         }
     },
 
@@ -185,14 +193,18 @@ export default {
         },
 
         showTemperature() {
-                            console.log(this.locationWeather)
+         console.log(this.locationWeather)
 
             axios.post('/api/weather', {
                 location: this.locationWeather
             })
             .then(response =>{
-            this.weather = response.data
-            console.log(response)
+
+            this.weather = JSON.parse(response.data)
+            this.temperature = parseInt(this.weather.main.temp - 273)
+            this.humidity = this.weather.main.humidity
+            this.pressure = this.weather.main.pressure/1000
+
             })
             .catch(error =>{
             console.log(error);
