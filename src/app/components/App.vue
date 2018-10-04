@@ -151,7 +151,12 @@
             </div>
            
             <div>
-                <p>{{  pollution }}</p>
+                <p>CO{{  pollutionCo }}</p>
+                <p>SO2{{  pollutionSo2 }}</p>
+                <p>O3{{  pollutionO3 }}</p>
+                <p>NO2{{  pollutionNo2 }}</p>
+
+
             </div>
         </div>
     </div>
@@ -165,7 +170,10 @@ export default {
     data() {
         return {
             weather: {},
-            pollution: [],
+            pollutionCo: [],
+            pollutionSo2: [],
+            pollutionO3: [],
+            pollutionNo2: [],
             locationWeather: "",
             locationPollution: "",
             temperature: "",
@@ -177,12 +185,49 @@ export default {
     methods: {
         showPollution() {
 
-            axios.post('/api/weather/pollution', {
+            //Co
+            axios.post('/api/weather/pollution/co', {
                 location: this.locationPollution,
             })
             .then(response =>{
-                this.pollution = response.data
-                console.log(this.pollution)
+                this.pollutionCo = JSON.parse(response.data)
+                console.log(this.pollutionCo)
+            })
+            .catch(error =>{
+                console.log(error);
+            })
+
+            //So2
+            axios.post('/api/weather/pollution/so2', {
+                location: this.locationPollution,
+            })
+            .then(response =>{
+                this.pollutionSo2 = JSON.parse(response.data)
+                console.log(this.pollutionSo2)
+            })
+            .catch(error =>{
+                console.log(error);
+            })
+
+            //o3
+            axios.post('/api/weather/pollution/o3', {
+                location: this.locationPollution,
+            })
+            .then(response =>{
+                this.pollutionO3 = JSON.parse(response.data)
+                console.log(this.pollutionO3)
+            })
+            .catch(error =>{
+                console.log(error);
+            })
+
+            //No2
+            axios.post('/api/weather/pollution/no2', {
+                location: this.locationPollution,
+            })
+            .then(response =>{
+                this.pollutionNo2 = JSON.parse(response.data)
+                console.log(this.pollutionNo2)
             })
             .catch(error =>{
                 console.log(error);
