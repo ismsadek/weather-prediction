@@ -6,7 +6,7 @@
     <div class="container">
         <div class="row pt-5">
             <div class="col-md-5">
-                <div class="card">
+                <div class="card temperature-container">
                     <div class="card-body">
                         <div class="form-group">
                             <select class="form-control" v-model="locationWeather">
@@ -162,6 +162,13 @@
     </div>
 </div>
 </template>
+
+<style>
+.temperature-container{
+    background-color: lightblue
+}
+</style>
+
 
 <script>
 import axios from 'axios'
