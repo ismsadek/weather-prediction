@@ -1,10 +1,13 @@
 <template>
 <div class="background">
-    <nav class="navbar navbar-light bg-light">
-        <a href="/" class="navbar-brand">OpenWeatherMap API</a>
-    </nav>
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h4 class="display-4">The Weather App</h4>
+            <p class="lead">Do you wanna know the weather of your city? Find out here!</p>
+        </div>
+    </div>
     <div class="container">
-        <div class="row pt-5">
+        <div class="row pt-3">
             <div class="col-md-5">
                 <div class="card temperature-container">
                     <div class="card-body">
@@ -71,9 +74,9 @@
                 </div>
             </div>
             <div>
-              <p><strong>temperature:</strong>{{ temperature }}ºC</p>
-              <p><strong>humidity:</strong>{{ humidity }}%</p>
-              <p><strong>pressure:</strong>{{ pressure }}bar</p>
+              <p><strong>Temperature: </strong>{{ temperature }}ºC</p>
+              <p><strong>Humidity: </strong>{{ humidity }}%</p>
+              <p><strong>Pressure: </strong>{{ pressure }}bar</p>
             
 
 
@@ -83,9 +86,9 @@
 
         <!--  -->
 
-                <div class="row pt-5">
-            <div class="col-md-5">
-                <div class="card">
+            <div class="row pt-5">
+            <div class="col-md-5 ">
+                <div class="card pollution-container">
                     <div class="card-body">
                         <div class="form-group">
                             <select class="form-control" v-model="locationPollution">
@@ -151,10 +154,10 @@
             </div>
            
             <div>
-                <p>CO{{  pollutionCo }}</p>
-                <p>SO2{{  pollutionSo2 }}</p>
-                <p>O3{{  pollutionO3 }}</p>
-                <p>NO2{{  pollutionNo2 }}</p>
+                <p>CO: {{  pollutionCo }}</p>
+                <p>SO2: {{  pollutionSo2 }}</p>
+                <p>O3: {{  pollutionO3 }}</p>
+                <p>NO2: {{  pollutionNo2 }}</p>
 
 
             </div>
@@ -163,11 +166,7 @@
 </div>
 </template>
 
-<style>
-.temperature-container{
-    background-color: lightblue
-}
-</style>
+
 
 
 <script>
@@ -269,7 +268,12 @@ export default {
 </script>
 
 <style>
-    /* template {
-        background-color: lightgrey;
-    } */
+    
+    .jumbotron {
+        background-color: #3FBAEA;
+
+    }
+    .temperature-container, .pollution-container{
+        background-color: lightblue
+    }
 </style>
